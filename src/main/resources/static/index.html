@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DeliverEase - Delivery Management System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">&#128666; DeliverEase</div>
+    <nav id="nav"></nav>
+    <div id="who"></div>
+  </header>
+  <div id="toast" class="toast hidden"></div>
+
+  <!-- Login / Register / Public tracking -->
+  <main id="auth-view" class="auth-grid">
+    <section class="card">
+      <h2 id="auth-title">Login</h2>
+      <div id="login-form">
+        <label>Email</label><input id="l-email" type="email" placeholder="you@example.com">
+        <label>Password</label><input id="l-pass" type="password" placeholder="Password">
+        <button onclick="login()">Login</button>
+        <p class="muted">New customer? <a href="#" onclick="toggleAuth(true)">Create an account</a></p>
+        <p class="muted small">Demo: admin@deliverease.com / admin123 &middot; ravi@deliverease.com / partner123</p>
+      </div>
+      <div id="register-form" class="hidden">
+        <label>Full name</label><input id="r-name">
+        <label>Email</label><input id="r-email" type="email">
+        <label>Password (min 6 characters)</label><input id="r-pass" type="password">
+        <label>Phone</label><input id="r-phone">
+        <label>Address</label><input id="r-address">
+        <button onclick="register()">Register</button>
+        <p class="muted">Already registered? <a href="#" onclick="toggleAuth(false)">Login</a></p>
+      </div>
+    </section>
+    <section class="card">
+      <h2>Track your order</h2>
+      <p class="muted">Enter the tracking ID to see the live status - no login needed.</p>
+      <input id="t-id-public" placeholder="e.g. DE20261024AB12C">
+      <button onclick="track('t-id-public','t-out-public')">Track</button>
+      <div id="t-out-public"></div>
+    </section>
+  </main>
+
+  <!-- Application -->
+  <main id="app-view" class="hidden"><div id="content"></div></main>
+
+  <script src="app.js"></script>
+</body>
+</html>
